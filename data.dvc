@@ -1,0 +1,5 @@
+outs:
+- md5: a200608098f108dfc4667e2e394d0cac.dir
+  size: 94251088
+  nfiles: 9
+  path: data
