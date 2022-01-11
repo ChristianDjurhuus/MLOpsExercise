@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements_tests.txt
         pip install dvc
         pip install dvc[gdrive]
-        dvc pull --run-cache
+        dvc pull
         dvc repro
         
     - name: Test with pytest
