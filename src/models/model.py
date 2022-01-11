@@ -17,6 +17,9 @@ class MyAwesomeModel(nn.Module):
         self.output = nn.Linear(50, 10)
 
     def forward(self, x):
+        #Asserting of input shape is correct
+        if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
+            raise ValueError('Expected each sample to have shape [1, 28, 28]')
         # Convolutional and maxpoolinf
         x = F.relu(F.max_pool2d(self.conv1(x), 2))
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
