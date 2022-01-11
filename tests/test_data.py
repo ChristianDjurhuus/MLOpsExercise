@@ -2,18 +2,13 @@ import os
 import numpy as np
 import torch
 
-#Temporary fix
-_PATH_DATA = os.path.join(
-    "/Users/christiandjurhuus/Documents/DTU/6_semester/ml_ops/dtu_mlops/s1_getting_started/exercise_files/final_exercise/mlOperation_day2/",
-    "data")  # root of data
-
 
 class TestClassData:
     def testOne(self):
         #Testing training data
 
         #Fetching training data
-        train = np.load(_PATH_DATA + "/raw/training_data.npz")
+        train = np.load("data/raw/training_data.npz")
         images = torch.Tensor(train.f.images)
         labels = torch.Tensor(train.f.labels).type(torch.LongTensor)
 
@@ -30,7 +25,7 @@ class TestClassData:
         #Testing test data
 
         #Fetching test data
-        testset = np.load(_PATH_DATA + "/raw/test.npz")
+        testset = np.load("data/raw/test.npz")
         images_test = torch.Tensor(testset.f.images)
         test_labels = torch.Tensor(testset.f.labels).type(torch.LongTensor)
 
