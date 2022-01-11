@@ -14,6 +14,11 @@ jobs:
       matrix:
         os: [ubuntu-20.04, macOS-10.15, windows-2019]
     steps:
+    - id: 'auth'
+    name: 'Authenticate to Google Cloud'
+    uses: 'google-github-actions/auth@v0.4.0'
+    with:
+      credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -28,7 +33,6 @@ jobs:
         pip install dvc
         pip install dvc[gdrive]
         dvc pull
-        dvc repro
         
     - name: Test with pytest
       run: |
