@@ -15,7 +15,8 @@ jobs:
         os: [ubuntu-20.04, macOS-10.15, windows-2019]
 
     steps:
-      run: dvc pull
+    - uses: actions/checkout@v2
+    - uses: iterative/setup-dvc@v1
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -27,6 +28,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements_tests.txt
+    - name: Pull data
+      run: |
+        pip install dvc
+        pip install "dvd[gdrive]"
+        dvc pull
     - name: Test with pytest
       run: |
         pip install pytest
