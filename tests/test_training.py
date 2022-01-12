@@ -1,11 +1,6 @@
-import os
 import sys
 import unittest
-
-import numpy as np
 import torch
-
-# os.chdir("/Users/christiandjurhuus/Documents/DTU/6_semester/ml_ops/dtu_mlops/s1_getting_started/exercise_files/final_exercise/mlOperation_day2")
 sys.path.insert(1, "src/models")
 from model import MyAwesomeModel
 

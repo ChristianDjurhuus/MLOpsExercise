@@ -1,13 +1,9 @@
-import os
 import sys
-
 import numpy as np
 import torch
-
-sys.path.insert(1, "src/models")
 import unittest
+sys.path.insert(1, "src/models")
 
-import pytest
 from model import MyAwesomeModel
 
 

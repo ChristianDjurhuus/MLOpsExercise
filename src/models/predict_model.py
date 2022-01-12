@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 import logging
-import sys
 from pathlib import Path
 
 import click
-import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from dotenv import find_dotenv, load_dotenv
 from model import MyAwesomeModel
-from torch.nn.functional import normalize
-from torch.utils.data import TensorDataset
 
 
 @click.command()
@@ -21,11 +17,7 @@ def evaluate(model_name):
     model = MyAwesomeModel()
     state_dict = torch.load("models/" + model_name)
     model.load_state_dict(state_dict)
-    try:
-        test_set = torch.load("data/processed/testloader.pth")
-    except:
-        print("Remember to process the data before training the model")
-        sys.exit(1)
+    test_set = torch.load("data/processed/testloader.pth")
 
     model.eval()
     accuracies = []
