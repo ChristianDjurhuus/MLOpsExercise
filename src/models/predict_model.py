@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 import logging
+import sys
 from pathlib import Path
 
 import click
-from dotenv import find_dotenv, load_dotenv
-
-import sys
-
-import torch
 import matplotlib.pyplot as plt
+import numpy as np
+import torch
+from dotenv import find_dotenv, load_dotenv
+from model import MyAwesomeModel
 from torch.nn.functional import normalize
 from torch.utils.data import TensorDataset
-import numpy as np
 
-from model import MyAwesomeModel
 
 @click.command()
-@click.argument('model_name', type=click.Path())
+@click.argument("model_name", type=click.Path())
 def evaluate(model_name):
     print("Evaluating until hitting the ceiling")
 
@@ -44,8 +42,9 @@ def evaluate(model_name):
             accuracies.append(accuracy)
     print("Estimate of accuracy: ", np.mean(accuracies))
 
-if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+if __name__ == "__main__":
+    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     logging.basicConfig(level=logging.INFO, format=log_fmt)
 
     # not used in this stub but often useful for finding various files

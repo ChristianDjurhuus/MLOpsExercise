@@ -3,23 +3,22 @@ import logging
 from pathlib import Path
 
 import click
-from dotenv import find_dotenv, load_dotenv
-
+import numpy as np
 import torch
+from dotenv import find_dotenv, load_dotenv
 from torch.nn.functional import normalize
 from torch.utils.data import TensorDataset
-import numpy as np
 
 
 @click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
+@click.argument("input_filepath", type=click.Path(exists=True))
+@click.argument("output_filepath", type=click.Path())
 def main(input_filepath: str, output_filepath: str):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
+    """Runs data processing scripts to turn raw data from (../raw) into
+    cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data by normalizing')
+    logger.info("making final data set from raw data by normalizing")
 
     train = np.load(input_filepath + "/training_data.npz")
     images = normalize(torch.Tensor(train.f.images), dim=1)
@@ -37,9 +36,8 @@ def main(input_filepath: str, output_filepath: str):
     torch.save(testloader, output_filepath + "/testloader.pth")
 
 
-
-if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+if __name__ == "__main__":
+    log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     logging.basicConfig(level=logging.INFO, format=log_fmt)
 
     # not used in this stub but often useful for finding various files

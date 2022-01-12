@@ -1,30 +1,29 @@
 # -*- coding: utf-8 -*-
 import logging
+import os
+import sys
 from pathlib import Path
 
 import click
-from dotenv import find_dotenv, load_dotenv
-
-import sys
-import os
-import torch
 import matplotlib.pyplot as plt
+import numpy as np
+import torch
+from dotenv import find_dotenv, load_dotenv
+from model import MyAwesomeModel
 from torch.nn.functional import normalize
 from torch.utils.data import TensorDataset
-import numpy as np
-from model import MyAwesomeModel
 
-#parent = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-#os.chdir(parent)
-#grand_parent = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-#os.chdir(grand_parent)
+# parent = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+# os.chdir(parent)
+# grand_parent = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+# os.chdir(grand_parent)
 
-#@click.command()
-#@click.argument('model_name', type=click.Path())
+# @click.command()
+# @click.argument('model_name', type=click.Path())
 def train():
-    #print("Training day and night")
-    #logger = logging.getLogger(__name__)
-    #logger.info('Training the model')
+    # print("Training day and night")
+    # logger = logging.getLogger(__name__)
+    # logger.info('Training the model')
 
     # TODO: Implement training loop here
     model = MyAwesomeModel()
@@ -67,5 +66,5 @@ def train():
     torch.save(model.state_dict(), "models/trained_model.pt")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     train()
